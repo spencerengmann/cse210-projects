@@ -88,4 +88,9 @@ class Journal
         }
         Console.WriteLine("Journal loaded!");
     }
+     public void AddPrompt(string newPrompt)
+    {
+        prompts.Add(newPrompt);
+        Console.WriteLine("Prompt added successfully!");
+    }
 }

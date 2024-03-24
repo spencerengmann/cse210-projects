@@ -1,3 +1,4 @@
+//I added the option for the user to add a prompt to the journal program. Sometimes we need to add more prompts to keep the enerygy of journal writing fresh.
 using System;
 
 class Program
@@ -17,13 +18,18 @@ class Program
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Save");
             Console.WriteLine("4. Load the Journal from a file");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Add Prompt");
+            Console.WriteLine("6. Quit");
             Console.WriteLine();
 
-
-            // collect response
+            // Collect response
             Console.WriteLine("What would you like to do?  ");
-            int choice = int.Parse(Console.ReadLine());
+            int choice;
+            if (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                continue;
+            }
 
             switch (choice)
             {
@@ -40,7 +46,12 @@ class Program
                     journal.LoadJournal();
                     break;
                 case 5:
-                    Environment.Exit(0);
+                    Console.WriteLine("Enter the new prompt:");
+                    string newPrompt = Console.ReadLine();
+                    journal.AddPrompt(newPrompt);
+                    break;
+                case 6:
+                    exit = true;
                     break;
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
@@ -48,10 +59,6 @@ class Program
             }
 
             Console.WriteLine();
-
         }
-
     }
-
-
 }
