@@ -19,18 +19,18 @@ class Program
             Console.Write("Select a choice from the menu: ");
             choice = Console.ReadLine();
 
-            // Interpret the user's choice 
+
             if (choice == "1")
             {
-                // Start the breathing activity
-                Console.Clear(); // Clear the console in preparation
 
-                // Create a breathing activity object
-                Breathing breathing = new Breathing(); // object
-                breathing.DisplayWelcome(); // display welcome message
-                Console.WriteLine(); // empty newline
-                breathing.DisplayDescription(); // display description of activity
-                Console.WriteLine(); // empty newline
+                Console.Clear();
+
+
+                Breathing breathing = new Breathing();
+                breathing.DisplayWelcome();
+                Console.WriteLine();
+                breathing.DisplayDescription();
+                Console.WriteLine();
                 breathing.GetSeconds();
                 Console.Clear();
                 breathing.DoBreathingActivity();
@@ -38,11 +38,11 @@ class Program
             else if (choice == "2")
             {
                 // Start the reflecting activity
-                Reflecting reflecting = new Reflecting(); // object
+                Reflecting reflecting = new Reflecting();
                 reflecting.DisplayWelcome();
-                Console.WriteLine(); // empty newline
-                reflecting.DisplayDescription(); // display description of activity
-                Console.WriteLine(); // empty newline
+                Console.WriteLine();
+                reflecting.DisplayDescription();
+                Console.WriteLine();
                 reflecting.GetSeconds();
                 Console.Clear();
                 reflecting.DoReflectingActivity();
@@ -50,11 +50,11 @@ class Program
             else if (choice == "3")
             {
                 // Starting the listing activity
-                Listing listing = new Listing(); // object
+                Listing listing = new Listing();
                 listing.DisplayWelcome();
-                Console.WriteLine(); // empty newline
-                listing.DisplayDescription(); // display description of activity
-                Console.WriteLine(); // empty newline
+                Console.WriteLine();
+                listing.DisplayDescription();
+                Console.WriteLine();
                 listing.GetSeconds();
                 Console.Clear();
                 listing.DisplayTodo();
