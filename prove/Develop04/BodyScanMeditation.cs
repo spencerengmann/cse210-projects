@@ -30,7 +30,7 @@ public class BodyPartPhase : MeditationPhase
     {
         Console.WriteLine($"Close your eyes and bring your attention to your {BodyPart.ToLower()}.");
         Console.WriteLine($"Notice any sensations in your {BodyPart.ToLower()}, such as {Sensation.ToLower()}.");
-        Thread.Sleep(3000); // Pause for 3 seconds to focus on the body part
+        Thread.Sleep(15000); // Pause for 15 seconds to focus on the body part
     }
 }
 
@@ -41,7 +41,7 @@ public class BodyScanMeditation
         Console.WriteLine("Welcome to the Body Scan Meditation!");
         Console.WriteLine("Find a comfortable sitting or lying position.");
 
-        // Define phases using subclasses
+
         MeditationPhase[] phases = new MeditationPhase[]
         {
             new BodyPartPhase("Toes Phase", "Toes", "warmth or tingling"),
