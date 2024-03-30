@@ -1,34 +1,52 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 public class Scripture
 {
-    Reference _reference;
+    public string Category { get; }
+    public string Book { get; }
+    public int Chapter { get; }
+    public List<Verse> Verses { get; }
 
-    List<Word> _words = new List<Word>();
-
-    public Scripture(string book, int chapter, int verse, string scripture)
+    public Scripture(string category, string book, int chapter, List<Verse> verses)
     {
-        _reference = new Reference(book, chapter, verse);
-
-
-        string[] parts = scripture.Split(" ");
-        foreach (string part in parts)
-        {
-            Word A = new Word(part);
-            _words.Add(A);
-        }
-        // this.InitializeOriginalText(text);
+        Category = category;
+        Book = book;
+        Chapter = chapter;
+        Verses = verses;
     }
-    public void Display()
+
+    public bool AllWordsHidden()
     {
-        foreach (Word word in _words)
+        return Verses.All(verse => verse.AllWordsHidden());
+    }
+
+    public void HideRandomWords()
+    {
+        foreach (Verse verse in Verses)
         {
-            // word.HideWord();
-            word.DisplayWord();
+            verse.HideRandomWord();
         }
     }
-    public void HideRandomWord()
+
+    public string GetHiddenText()
     {
-        Random rnd = new Random();
-        int rantnum = rnd.Next(_words.Count);
-        _words[rantnum].HideWord();
+        string scriptureText = $"{Category}\n{Book} {Chapter}:\n";
+        foreach (Verse verse in Verses)
+        {
+            scriptureText += $"{verse.GetHiddenText()}\n";
+        }
+        return scriptureText;
+    }
+
+    public string GetFullText()
+    {
+        string scriptureText = $"{Category}\n{Book} {Chapter}:\n";
+        foreach (Verse verse in Verses)
+        {
+            scriptureText += $"{verse.GetFullText()}\n";
+        }
+        return scriptureText;
     }
 }
