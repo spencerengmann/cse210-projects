@@ -37,7 +37,7 @@ class Program
                 if (!restart)
                     break;
 
-                Console.WriteLine("All words are hidden. Press Enter to continue or type 'quit' to exit.");
+                Console.WriteLine("All the words are hidden. Press Enter to continue or type 'quit' to exit.");
                 string quitOrRestart = Console.ReadLine();
                 if (quitOrRestart.ToLower() == "quit")
                 {
@@ -51,7 +51,7 @@ class Program
             }
         }
 
-        Console.WriteLine("Memorization program ended. Press any key to exit...");
+        Console.WriteLine("Memorization program has ended. Please Press any key to exit...");
         Console.ReadKey();
     }
 
