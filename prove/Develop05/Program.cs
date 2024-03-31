@@ -1,3 +1,4 @@
+//Added the option for the user to quickly see their scores.
 using System;
 
 namespace EternalQuest
