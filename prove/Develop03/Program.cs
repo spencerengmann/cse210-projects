@@ -1,4 +1,3 @@
-//Present the user with the option to choose what bok of scripture they would memorize.
 using System;
 using System.Collections.Generic;
 
@@ -13,6 +12,9 @@ class Program
         {
             string category = GetUserSelection();
 
+            if (category == "Quit")
+                break;
+
             List<Scripture> selectedScriptures = GenerateScriptures(category, allScriptures);
 
             foreach (Scripture scripture in selectedScriptures)
@@ -23,7 +25,7 @@ class Program
                 {
                     Console.WriteLine("Press Enter to continue or type 'quit' to exit.");
                     string input = Console.ReadLine();
-                    if (input.ToLower() == "quit")
+                    if (input.ToLower() == "quit" || scripture.AllWordsHidden())
                     {
                         restart = false;
                         break;
@@ -39,13 +41,9 @@ class Program
 
                 Console.WriteLine("All the words are hidden. Press Enter to continue or type 'quit' to exit.");
                 string quitOrRestart = Console.ReadLine();
-                if (quitOrRestart.ToLower() == "quit")
+                if (quitOrRestart.ToLower() == "quit" || scripture.AllWordsHidden())
                 {
                     restart = false;
-                    break;
-                }
-                else if (quitOrRestart != "")
-                {
                     break;
                 }
             }
@@ -82,8 +80,7 @@ class Program
                 case 5:
                     return "Random";
                 case 6:
-                    Environment.Exit(0);
-                    break;
+                    return "Quit";
                 default:
                     Console.WriteLine("Invalid choice. Please try again.");
                     return GetUserSelection();
@@ -94,9 +91,7 @@ class Program
             Console.WriteLine("Invalid input. Please enter a number.");
             return GetUserSelection();
         }
-        return "";
     }
-
 
     static List<Scripture> GenerateScriptures(string category, List<Scripture> allScriptures)
     {
